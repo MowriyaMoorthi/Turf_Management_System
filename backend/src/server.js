@@ -11,7 +11,12 @@ const app = express();
 
 // ── CORS — allow both port 3000 and 5173 ────
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173'],
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://turf-management-system-rho.vercel.app',
+    process.env.CLIENT_URL,
+  ],
   credentials: true,
 }));
 

@@ -8,7 +8,12 @@ const Turf = require('./models/Turf');
 const Booking = require('./models/Booking');
 
 const seedData = async () => {
-  await mongoose.connect(process.env.MONGO_URI);
+  await mongoose.connect(process.env.MONGO_URI, {
+    ssl: true,
+    tlsAllowInvalidCertificates: true,
+    retryWrites: true,
+    w: 'majority'
+  });
   console.log('✅ MongoDB connected');
 
   await User.deleteMany();
